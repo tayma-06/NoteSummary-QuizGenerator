@@ -27,10 +27,10 @@ def audio_transcript(text):
     return audio_buffer
 
 #quiz generator
-def quiz_generator(image, difficulty):
+def quiz_generator(images, difficulty):
     prompt = f"Generate 3 quizzes based on the {difficulty}. Make sure to add a markdown to differentiate the options. Add the correct answers at the end of the quiz with the heading 'Answer Key'"
     response = client.models.generate_content(
         model = "gemini-3-flash-preview",
-        contents=[image, prompt]
+        contents=[*images, prompt]
     )
     return response.text
